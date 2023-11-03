@@ -4,6 +4,6 @@ const router = express.Router();
 //import controller
 const { getLink } = require("../controllers/linkController");
 
-router.get("/getLink", getLink);
+router.post("/getLink", getLink);
 
 module.exports = router;

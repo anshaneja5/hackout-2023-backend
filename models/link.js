@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
 
 const linkSchema = new mongoose.Schema({
-  title: {
-    required: true,
+  domain: {
     type: String,
   },
-  link: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
+  subdomain: {
+    type: String,
+  },
+  sitetitle: {
+    type: String,
+  },
+  sitelink: {
+    type: String,
+  },
 });
 
-module.exports = mongoose.model("Link", linkSchema);
+module.exports = mongoose.model("links", linkSchema);

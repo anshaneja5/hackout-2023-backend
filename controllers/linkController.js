@@ -1,19 +1,22 @@
-const Link = require("../models/link");
+const Links = require("../models/link");
+const { success } = require("../utils/responseWrapper");
 
-exports.getLink = async (req, res) => {
+const getLink = async (req, res) => {
   try {
-    const link = await Link.find({});
-    res.status(200).json({
-      success: true,
-      data: link,
-      message: "Entire Link Data is Fetched",
-    });
+    const domain = req.body.domain;
+    console.log(domain);
+    const link = await Links.find({domain});
+    return res.send(success(200, link));
   } catch (err) {
     console.error(err);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: err.message,
       message: "Server error",
     });
   }
+};
+
+module.exports = {
+  getLink,
 };
